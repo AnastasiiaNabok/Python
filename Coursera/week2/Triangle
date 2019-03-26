@@ -1,0 +1,45 @@
+a = int(input())
+b = int(input())
+c = int(input())
+d = int()
+if a < b:
+    if b < c:
+        a = a
+        b = b
+        c = c
+    elif a < c:
+        d = b
+        b = c
+        c = d
+        a = a
+    else:
+        d = a
+        a = c
+        c = b
+        b = d
+else:
+    d = a
+    a = b
+    b = d
+    if b < c:
+        a = a
+        b = b
+        c = c
+    elif a < c:
+        d = b
+        b = c
+        c = d
+        a = a
+    else:
+        d = a
+        a = c
+        c = b
+        b = d
+if c > a+b:
+    print('impossible')
+elif c**2 == a**2 + b**2:
+    print('rectangular')
+elif c**2 < a**2 + b**2:
+    print('acute')
+elif c**2 > a**2 + b**2:
+    print('obtuse')

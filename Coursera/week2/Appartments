@@ -1,0 +1,7 @@
+Apt1 = int(input())
+Apt2 = int(input())
+Count = Apt2 - Apt1 + 1
+if (Apt1 - 1) % Count == 0:
+    print('YES')
+else:
+    print('NO')

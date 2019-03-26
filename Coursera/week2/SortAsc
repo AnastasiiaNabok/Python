@@ -1,0 +1,38 @@
+a = int(input())
+b = int(input())
+c = int(input())
+d = int()
+if a < b:
+    if b < c:
+        a = a
+        b = b
+        c = c
+    elif a < c:
+        d = b
+        b = c
+        c = d
+        a = a
+    else:
+        d = a
+        a = c
+        c = b
+        b = d
+else:
+    d = a
+    a = b
+    b = d
+    if b < c:
+        a = a
+        b = b
+        c = c
+    elif a < c:
+        d = b
+        b = c
+        c = d
+        a = a
+    else:
+        d = a
+        a = c
+        c = b
+        b = d
+print(a, b, c)

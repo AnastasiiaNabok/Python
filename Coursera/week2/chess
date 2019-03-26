@@ -1,0 +1,11 @@
+A1 = int(input())
+A2 = int(input())
+B1 = int(input())
+B2 = int(input())
+if A1 == B1 or A1 + 1 == B1 or A1 - 1 == B1:
+    if A2 == B2 or A2 + 1 == B2 or A2 - 1 == B2:
+        print('YES')
+    else:
+        print('NO')
+else:
+    print('NO')

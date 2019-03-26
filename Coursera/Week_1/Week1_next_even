@@ -1,0 +1,3 @@
+number = input()
+result = (number * 100) ** 2
+print(result)
