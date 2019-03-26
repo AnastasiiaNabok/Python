@@ -1,0 +1,19 @@
+'''Задано чотирицифрове натуральне число.
+Знайти добуток цифр цього числа.
+Записати число в реверсному порядку.
+Посортувати цифри, що входять в дане число
+Поміняти між собою значення двох змінних, не використовуючи третьої змінної.'''
+
+number = int(input('Please enter the 4 digit number: '))
+sum = number // 1000 + number % 1000 // 100 + number % 100 // 10 + number % 10
+
+print(f'Summary of digits in number is {sum}')
+
+reverse_number = str(number % 10) + str(number % 100 // 10) + str(number % 1000 // 100) + str(number // 1000)
+
+print(f'Reverse number is {reverse_number}')
+
+
+number, reverse_number = reverse_number, number
+print(f'Number is {number}')
+print(f'Reverse number is {reverse_number}')
