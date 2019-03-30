@@ -1,0 +1,69 @@
+lst = []
+
+while True:
+    number = input('Enter the number if you want to continue and n if you want to stop: ')
+    if number.isdigit():
+        lst.append(int(number))
+        continue
+    else:
+        break
+
+sort_order = input(
+    'Enter ASC to sort by ascending, DESC to sort by descending and ST for stepped sorting: ')
+
+def partition(list, lo, hi):
+    i = lo
+    j = hi + 1
+    while True:
+        i += 1
+        while list[i] < list[lo]:
+            if i == hi:
+                break
+            i += 1
+
+        j -= 1
+        while list[lo] < list[j]:
+            if j == lo:
+                break
+            j -=1
+
+        if i >= j:
+            break
+        list[i],list[j] = list[j], list[i]
+
+    list[lo], list[j] = list[j], list[lo]
+    return j
+
+
+def quick_sort(list, lo, hi):
+    if hi <= lo:
+        return
+    j = partition(list, lo, hi)
+    quick_sort(list, lo, j-1)
+    quick_sort(list, j+1, hi)
+
+
+
+def sort_func(list, sort_order):
+    sort_order = sort_order.upper()
+    len_list = len(lst)
+    quick_sort(lst, 0, len_list - 1)
+    if sort_order == "ASC":
+        print("Sort by ASC", lst)
+    elif sort_order == "DESC":
+        print("Sort by DESC", lst.reverse())
+    elif sort_order == "ST":
+        temp_lst = lst.copy()
+
+        for i in range(len_list):
+            if i % 2 == 0:
+                temp_lst[i // 2] = lst[i]
+            else:
+                temp_lst[-(i + 1) // 2] = list[i]
+
+        print("Sort stepped", temp_lst)
+    else:
+        print("Incorrect sort order")
+
+
+sort_func(lst, sort_order)
