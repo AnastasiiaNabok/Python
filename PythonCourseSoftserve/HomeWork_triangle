@@ -1,0 +1,9 @@
+height = int(input('Please enter triangle height: '))
+width = int(input('Please enter triangle width: '))
+triangle = []
+
+# 1st triangle
+for i in range(1, height+1):
+    for j in range(int(i * width/height)):
+        print("*", end='')
+    print("\r")
