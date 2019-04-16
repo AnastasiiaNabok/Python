@@ -20,12 +20,43 @@ class Item:
             cursor.executemany('INSERT INTO  items(name, pricePerItem, countable) VALUES (?,?,?)', new_item)
             conn.commit()
 
-    def delete(self):
-        pass
+    @staticmethod
+    def find_by_name(name):
+        if cursor.execute('SELECT * FROM items where name = ?', (name,)).fetchone():
+            for item in cursor.execute('SELECT * FROM items where name = ?', (name,)):
+                print(tuple(item))
+        else:
+            print("User doesn't exist")
 
-    def update(self):
-        pass
+    @staticmethod
+    def delete_by_name(name):
+        if cursor.execute('SELECT * FROM items where name = ?', (name, )).fetchone():
+            for item in cursor.execute('SELECT * FROM items where name = ?', (name,)):
+                cursor.execute('Delete FROM items where name = ?', (name,))
+                cursor.fetchall()
+                conn.commit()
+                print(f'Item {name} was deleted')
+        else:
+            print("Item doesn't exist")
 
-    def get(self):
-        pass
+    def update(self, new_name=None, new_price=None, new_countable=None):
+        if new_name and new_name != self.name:
+            for item in cursor.execute('SELECT * FROM items where name = ?', (self.name,)):
+                print(f'Item {self.name} updated to {new_name}')
+                cursor.execute('UPDATE items SET name = ? WHERE name= ?', (new_name, self.name))
+        if new_price and new_price != self.price:
+            for item in cursor.execute('SELECT * FROM items where pricePerItem = ?', (self.price,)):
+                print(f'Price {self.price} updated to {new_price}')
+                cursor.execute('UPDATE items SET pricePerItem = ? WHERE pricePerItem= ?',
+                               (new_price, self.price))
+        if new_countable and new_countable != self.countable:
+            for item in cursor.execute('SELECT * FROM items where countable = ?', (self.countable,)):
+                cursor.execute('UPDATE items SET countable = ? WHERE countable= ?', (new_countable, self.countable))
+        cursor.fetchall()
+        conn.commit()
+
+    @staticmethod
+    def show_all():
+        for item in cursor.execute('SELECT * FROM items'):
+            print(tuple(item))
 

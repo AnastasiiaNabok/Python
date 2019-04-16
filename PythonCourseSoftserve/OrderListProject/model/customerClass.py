@@ -42,15 +42,15 @@ class Customer:
             print("User doesn't exist")
 
     def update(self, new_name=None, new_phone_number=None, new_address=None):
-        if new_name:
+        if new_name and new_name != self.name:
             for customer in cursor.execute('SELECT * FROM customers where name = ?', (self.name,)):
                 print(f'Name {self.name} updated to {new_name}')
                 cursor.execute('UPDATE customers SET name = ? WHERE name= ?', (new_name, self.name))
-        if new_phone_number:
+        if new_phone_number and new_phone_number != self.phone_number:
             for customer in cursor.execute('SELECT * FROM customers where phoneNumber = ?', (self.phone_number,)):
                print(f'Phone Number {self.phone_number} updated to {new_phone_number}')
                cursor.execute('UPDATE customers SET phoneNumber = ? WHERE phoneNumber= ?', (new_phone_number,self.phone_number))
-        if new_address:
+        if new_address and new_address != self.address:
             for customer in cursor.execute('SELECT * FROM customers where address = ?', (self.address,)):
                cursor.execute('UPDATE customers SET address = ? WHERE address= ?', (new_address, self.address))
         cursor.fetchall()

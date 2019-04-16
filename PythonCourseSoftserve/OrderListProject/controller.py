@@ -30,5 +30,5 @@ Customer.find_by_name('Ivan')
 
 Customer.show_all()
 
-new_customer.update('Ira','123445','Lviv blabla')
+new_customer.update('Ira')
 Customer.show_all()
