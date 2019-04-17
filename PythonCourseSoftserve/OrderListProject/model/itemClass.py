@@ -9,6 +9,7 @@ class Item:
         self.name = name
         self.countable = countable
         self.price = price
+        self.create()
 
     def create(self):
         new_item = [(self.name, self.price, self.countable)]
@@ -44,14 +45,17 @@ class Item:
             for item in cursor.execute('SELECT * FROM items where name = ?', (self.name,)):
                 print(f'Item {self.name} updated to {new_name}')
                 cursor.execute('UPDATE items SET name = ? WHERE name= ?', (new_name, self.name))
+
         if new_price and new_price != self.price:
             for item in cursor.execute('SELECT * FROM items where pricePerItem = ?', (self.price,)):
                 print(f'Price {self.price} updated to {new_price}')
                 cursor.execute('UPDATE items SET pricePerItem = ? WHERE pricePerItem= ?',
                                (new_price, self.price))
+
         if new_countable and new_countable != self.countable:
             for item in cursor.execute('SELECT * FROM items where countable = ?', (self.countable,)):
                 cursor.execute('UPDATE items SET countable = ? WHERE countable= ?', (new_countable, self.countable))
+
         cursor.fetchall()
         conn.commit()
 

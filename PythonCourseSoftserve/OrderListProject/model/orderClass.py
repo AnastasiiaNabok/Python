@@ -6,14 +6,18 @@ cursor = conn.cursor()
 
 
 class Order:
-    def __init__(self, customer, item, date):
-        self.customer = customer
-        self.item = item
+    def __init__(self, customerId, itemId, date):
+        self.customerId = customerId
+        self.itemId = itemId
         self.date = date
         self.completed = False
+        self.create()
 
-    def save(self):
-        pass
+    def create(self):
+        cursor.executemany('INSERT INTO  customers(customerID, itemID, date, completed) VALUES (?,?,?)', (self.customerId,
+                                                                                                 self.itemID, self.date,
+                                                                                                 self.completed))
+        conn.commit()
 
     def delete(self):
         pass
