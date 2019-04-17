@@ -14,7 +14,7 @@ class Order:
         self.create()
 
     def create(self):
-        cursor.executemany('INSERT INTO  customers(customerID, itemID, date, completed) VALUES (?,?,?)', (self.customerId,
+        cursor.executemany('INSERT INTO  customers(customerID, itemID, date, completed) VALUES (?,?,?,?)', (self.customerId,
                                                                                                  self.itemID, self.date,
                                                                                                  self.completed))
         conn.commit()
@@ -25,5 +25,7 @@ class Order:
     def update(self):
         pass
 
-    def get(self):
-        pass
+    @staticmethod
+    def show_all():
+        for order in cursor.execute('SELECT * FROM orders'):
+            print(tuple(order))
