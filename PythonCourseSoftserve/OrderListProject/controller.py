@@ -1,34 +1,21 @@
-from model.itemClass import Item
-from model.customerClass import Customer
-import sqlite3
+from OrderListProject.model.DB_create import get_all_items, create_item, delete_item_by_name, update_item, \
+    get_item_by_name, get_customer_by_name, delete_customer_by_name_and_phone, update_customer, get_all_customers, \
+    create_customer
+from OrderListProject.model.models import Customer, Item
 
-conn = sqlite3.connect('order_DB.db')
-
-cursor = conn.cursor()
-
-new_customer = Customer('Anastasiia', '08742129390', 'dhhdhdhssllsdkn dfjdj')
-
-#new_customer.create()
+customer = Customer('Aliona', '087421868291', 'KIev blalbla')
 
 new_item = Item('carrot cupcake', 350, True)
 
-# new_item.create()
+create_customer(customer)
+get_customer_by_name('Anna')
+delete_customer_by_name_and_phone('Anna', '34')
+update_customer(customer, 'Anna', '34', 'eorrfdsk')
 
-def find_by_name1(name):
-    if cursor.execute('SELECT * FROM customers where name = ?', (name,)).fetchone():
-        for customer in cursor.execute('SELECT * FROM customers where name = ?', (name,)):
-            print(customer)
-    else:
-        print("User doesn't exist")
+get_all_customers()
 
-
-# find_by_name1('Ivan')
-
-Customer.find_by_name('Ivan')
-
-#Customer.delete_by_name_and_phone('Anastasiia', '08742129390')
-
-Customer.show_all()
-
-new_customer.update('Ira')
-Customer.show_all()
+create_item(new_item)
+get_item_by_name('carrot cupcake')
+delete_item_by_name('cupcake')
+update_item(customer, 'Anna', '34', 'eorrfdsk')
+get_all_items()
