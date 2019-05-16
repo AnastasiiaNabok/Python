@@ -18,8 +18,7 @@ def validate_input(input_value):
         if val > 0:
             return val
         else:
-            new_val = validate_input(input('Please enter positive number: '))
-            return float(new_val)
+            raise ValueError
     except ValueError:
         print("That's not a number!")
         new_val = validate_input(input('Please enter positive number: '))
