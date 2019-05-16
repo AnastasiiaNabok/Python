@@ -19,11 +19,11 @@ class FibonacciNumber:
 
     @staticmethod
     def validate_input(input_value):
-        val = int(input_value)
-        if val >= 0:
+        if input_value.isdigit() and int(input_value) >= 0:
+            val = int(input_value)
             return val
         else:
-            raise ValueError('Value {} is not correct. Should be positive number'.format(input_value,))
+            raise ValueError('Value "{}" is not correct. Should be positive number'.format(input_value,))
 
     def generate_fibonacci_list(self):
         f1 = 0
@@ -44,7 +44,7 @@ def main():
             print(fn)
         except ValueError as e:
             print(e)
-            try_again = input('Press "y" or "yes" if you want to try again')
+            try_again = input('Press "y" or "yes" if you want to try again. Press any key if you want to stop.')
             if try_again.lower() == 'y' or try_again.lower == "yes":
                 main()
 
