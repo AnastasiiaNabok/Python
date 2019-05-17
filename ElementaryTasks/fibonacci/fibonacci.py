@@ -34,6 +34,10 @@ class FibonacciNumber:
             f1, f2 = f2, f1 + f2
         return self.fibonacci_list
 
+def try_again():
+    try_again = input('Press "y" or "yes" if you want to try again.  Press any key if you want to stop. ')
+    if try_again.lower() == 'y' or try_again.lower == "yes":
+        main()
 
 def main():
         start = input('Please enter start of range: ')
@@ -42,11 +46,10 @@ def main():
         try:
             fn = FibonacciNumber(start, end)
             print(fn)
+            try_again()
         except ValueError as e:
             print(e)
-            try_again = input('Press "y" or "yes" if you want to try again. Press any key if you want to stop.')
-            if try_again.lower() == 'y' or try_again.lower == "yes":
-                main()
+            try_again()
 
 
 if __name__ == '__main__':
