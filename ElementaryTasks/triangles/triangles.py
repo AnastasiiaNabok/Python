@@ -65,6 +65,7 @@ def main():
 if __name__ == '__main__':
     triangles = main()
     triangles.sort(key=lambda x: x.area, reverse=True)
+    print('============= Triangles list: ===============')
     for t in triangles:
-        print(f'"{t.name}" triangle has {t.area} area')
+        print(f'"{t.name}": {t.area} cm')
 
