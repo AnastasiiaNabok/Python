@@ -8,15 +8,6 @@ class FibonacciNumber:
         self.fibonacci_list = []
         self.generate_fibonacci_list()
 
-    def __str__(self):
-        if not self.fibonacci_list:
-            return 'No fibonacci numbers between {} and {}'.format(self.start,
-                                                                      self.end, )
-        else:
-            return 'Fibonacci numbers between {} and {} is {}'.format(self.start,
-                                                                  self.end,
-                                                                  self.fibonacci_list,)
-
     @staticmethod
     def validate_input(input_value):
         if input_value.isdigit() and int(input_value) >= 0:
@@ -34,10 +25,12 @@ class FibonacciNumber:
             f1, f2 = f2, f1 + f2
         return self.fibonacci_list
 
+
 def try_again():
     try_again = input('Press "y" or "yes" if you want to try again.  Press any key if you want to stop. ')
     if try_again.lower() == 'y' or try_again.lower == "yes":
         main()
+
 
 def main():
         start = input('Please enter start of range: ')
@@ -45,7 +38,17 @@ def main():
 
         try:
             fn = FibonacciNumber(start, end)
-            print(fn)
+            if not fn:
+                print ('No fibonacci numbers between {} and {}'.format(
+                    start,
+                    end,
+                ))
+            else:
+                print('Fibonacci numbers between {} and {} is {}'.format(
+                    start,
+                    end,
+                    fn,
+                ))
             try_again()
         except ValueError as e:
             print(e)

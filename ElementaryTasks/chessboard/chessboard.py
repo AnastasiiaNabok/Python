@@ -8,7 +8,7 @@ class ChessBoard:
 
     @staticmethod
     def validate_input(input_value):
-        if input_value.isdigit() and int(input_value) > 0:
+        if input_value > 0:
             val = int(input_value)
             return val
         else:
@@ -33,10 +33,9 @@ def try_again():
 
 
 def main():
-    width = input('Please enter board with: ')
-    height = input('Please enter board height: ')
-
     try:
+        width = int(input('Please enter board with: '))
+        height = int(input('Please enter board height: '))
         board = ChessBoard(width, height)
         print(board)
         try_again()
