@@ -28,6 +28,12 @@ class TestSplit(unittest.TestCase):
 
 class TestValidation(unittest.TestCase):
 
+    def test_success_validation(self):
+        parsed_line = {'name': 'Test.34', 'sides': ['2', '2', '1']}
+        expected_result = ('Test.34', 2.0, 2.0, 1.0)
+        actual_result = validate_inputs(parsed_line)
+        self.assertEqual(actual_result, expected_result)
+
     def test_if_not_enough_dimensions(self):
         parsed_line = {'name': 'Test.34', 'sides': ['45']}
         with self.assertRaises(ValueError):
