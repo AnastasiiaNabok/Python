@@ -1,4 +1,5 @@
 import math
+import re
 
 
 class Triangle:
@@ -17,7 +18,7 @@ class Triangle:
 
 def split_inputs(triangle):
     triangle_parsed = {}
-    triangle = triangle.replace(' ', '').split(',')
+    triangle = re.sub(r'\s|\t', '', triangle).split(',')
     name = triangle[0]
     sides = []
     for side in triangle[1:]:
