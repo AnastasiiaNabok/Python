@@ -27,12 +27,12 @@ def split_inputs(triangle):
 
 
 def validate_inputs(triangle_parsed):
-    if len(triangle_parsed['sides']) > 3:
-        raise ValueError('Should not be more than 3 sides')
+    if len(triangle_parsed['sides']) != 3:
+        raise ValueError('Please provide us 3 sides')
 
     for side in triangle_parsed['sides']:
         if not side.isdigit():
-            raise ValueError('"{}" is not a number'.format(side))
+            raise ValueError(f'"{side}" is not a number')
 
     side1 = float(triangle_parsed['sides'][0])
     side2 = float(triangle_parsed['sides'][1])
