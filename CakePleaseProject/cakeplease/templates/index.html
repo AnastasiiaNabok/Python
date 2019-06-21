@@ -1,0 +1,16 @@
+<!DOCTYPE html> <html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<body>
+{% for item in items %}
+<div>
+    <h2>{{ item.name }}</h2>
+    <img src="{{item.image}}" alt="Product image" width="250px"/>
+    <p>{{item.description}}</p>
+    <p>Price: {{ item.price }} UAH</p>
+    <p>Minimal order count is {{ item.minimal_order }}</p>
+</div>
+{% endfor %}
+</body>
+</html>
