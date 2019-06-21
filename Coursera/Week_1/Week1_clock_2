@@ -1,6 +1,0 @@
-seconds = int(input())
-hours = seconds // 3600 % 24
-minutes = (seconds % 3600) // 60
-seconds = (seconds % 3600) % 60
-seconds_r = str(seconds // 10) + str(seconds % 10)
-print(hours, ':', minutes // 10, minutes % 10, ':', seconds_r, sep='')

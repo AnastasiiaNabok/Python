@@ -1,6 +1,0 @@
-minutes = int(input())
-minutes1 = minutes % 60
-hours = minutes // 60
-hours1 = hours // 24
-print()
-print(hours1, minutes1)

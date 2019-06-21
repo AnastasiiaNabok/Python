@@ -1,3 +1,0 @@
-number = input() * 100
-result = int(number) ** 2
-print(result)

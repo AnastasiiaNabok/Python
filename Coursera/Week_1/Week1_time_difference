@@ -1,3 +1,0 @@
-hours1 = int(input())
-minutes1 = int(input())
-print(total_seconds2 - total_seconds1)

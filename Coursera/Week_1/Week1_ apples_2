@@ -1,4 +1,0 @@
-students = int(input())
-apples = int(input())
-remain = apples % students
-print(remain)
